@@ -31,7 +31,7 @@ public class Tour {
     @Column(name = "beginDate",nullable = false)
     private LocalDate beginDate;
     @Column(name = "countOfDay",nullable = false)
-    private LocalDate countOfDay;
+    private LocalDate endDay;
 
     @OneToMany(mappedBy = "tour")
     private Collection<Review> reviews;
@@ -40,14 +40,14 @@ public class Tour {
     @JoinColumn(name = "category",nullable = false)
     private Category category;
 
-    public Tour(String title, String country, String tourLocation, String description, String image, LocalDate beginDate, LocalDate countOfDay, Category category) {
+    public Tour(String title, String country, String tourLocation, String description, String image, LocalDate beginDate, LocalDate endDay, Category category) {
         this.title = title;
         this.country = country;
         this.tourLocation = tourLocation;
         this.description = description;
         this.image = image;
         this.beginDate = beginDate;
-        this.countOfDay = countOfDay;
+        this.endDay = endDay;
         this.category = category;
     }
 }

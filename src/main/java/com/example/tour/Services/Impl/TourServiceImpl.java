@@ -16,6 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -51,7 +52,7 @@ public class TourServiceImpl implements TourService {
                                 tour.getImage(),
                                 tour.getCategory().getTitle(),
                                 tour.getBeginDate(),
-                                tour.getCountOfDay(),
+                                tour.getEndDay(),
                                 tour.getReviews()
                                         .stream()
                                         .map(review->{
@@ -89,7 +90,7 @@ public class TourServiceImpl implements TourService {
                         request.getDescription(),
                         imageUrl,
                         request.getBeginDate(),
-                        request.getCountOfDate(),
+                        request.getEndDay(),
                         category));
 
         return new TourResponseDetailDto(
@@ -101,7 +102,7 @@ public class TourServiceImpl implements TourService {
                 tour.getImage(),
                 tour.getCategory().getTitle(),
                 tour.getBeginDate(),
-                tour.getCountOfDay(),
+                tour.getEndDay(),
                 tour.getReviews()
                         .stream()
                         .map(review->{
@@ -111,5 +112,10 @@ public class TourServiceImpl implements TourService {
                                     review.getImage(),
                                     review.getComment());
                         }).toList());
+    }
+
+    @Override
+    public List<TourResponseLiteDto> getRecommended() {
+        return tourRepository.findRecommended(LocalDate.now().plusDays(5));
     }
 }

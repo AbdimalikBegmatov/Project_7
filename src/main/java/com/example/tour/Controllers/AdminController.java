@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.time.LocalDate;
 
 @RestController
 @RequestMapping("api/v1/admin")
@@ -48,4 +49,14 @@ public class AdminController {
         requestDto.setImage(image);
         return new ResponseEntity<>(reviewService.create(requestDto),HttpStatus.CREATED);
     }
+    @PostMapping("test")
+    public ResponseEntity<?> test(){
+        LocalDate date = LocalDate.now();
+        LocalDate date1 = LocalDate.of(2024,2,18);
+//        if (date.isBefore(date1)){
+//            return new ResponseEntity<>(date,HttpStatus.OK);
+//        }
+        return new ResponseEntity<>(date.minusDays(7),HttpStatus.OK);
+    }
+
 }

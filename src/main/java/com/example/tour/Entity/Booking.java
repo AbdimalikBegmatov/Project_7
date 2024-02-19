@@ -22,4 +22,11 @@ public class Booking {
     private String comment;
     @Column(name = "tourId")
     private Integer tourId;
+
+    public Booking(Integer countOfPeople, String phoneNumber, String comment, Integer tourId) {
+        this.countOfPeople = countOfPeople;
+        this.phoneNumber = phoneNumber;
+        this.comment = comment;
+        this.tourId = tourId;
+    }
 }

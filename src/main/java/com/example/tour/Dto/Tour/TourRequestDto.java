@@ -30,15 +30,15 @@ public class TourRequestDto {
     @NotNull
     private LocalDate beginDate;
     @NotNull
-    private LocalDate countOfDate;
+    private LocalDate endDay;
 
-    public TourRequestDto(String title, String country, String tourLocation, String description, Integer category, LocalDate beginDate, LocalDate countOfDate) {
+    public TourRequestDto(String title, String country, String tourLocation, String description, Integer category, LocalDate beginDate, LocalDate endDay) {
         this.title = title;
         this.country = country;
         this.tourLocation = tourLocation;
         this.description = description;
         this.category = category;
         this.beginDate = beginDate;
-        this.countOfDate = countOfDate;
+        this.endDay = endDay;
     }
 }
