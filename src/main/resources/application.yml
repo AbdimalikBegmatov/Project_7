@@ -1,8 +1,8 @@
 spring:
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/pizzamarket
-    username: postgres
+    url: jdbc:postgresql://localhost:5432/tourdb
+    username: myuser2
     password: 6574
 
   jpa:
