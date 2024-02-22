@@ -44,19 +44,10 @@ public class AdminController {
     public ResponseEntity<CategoryResponseDto> create(@RequestBody @Valid CategoryRequestDto categoryRequestDto){
         return new ResponseEntity<>(categoryService.create(categoryRequestDto),HttpStatus.CREATED);
     }
-    @PostMapping
+    @PostMapping("review")
     public ResponseEntity<HttpStatus> create(@RequestPart("request") @Valid ReviewRequestDto requestDto, @RequestPart("image")MultipartFile image) throws IOException {
         requestDto.setImage(image);
         return new ResponseEntity<>(reviewService.create(requestDto),HttpStatus.CREATED);
-    }
-    @PostMapping("test")
-    public ResponseEntity<?> test(){
-        LocalDate date = LocalDate.now();
-        LocalDate date1 = LocalDate.of(2024,2,18);
-//        if (date.isBefore(date1)){
-//            return new ResponseEntity<>(date,HttpStatus.OK);
-//        }
-        return new ResponseEntity<>(date.minusDays(7),HttpStatus.OK);
     }
 
 }

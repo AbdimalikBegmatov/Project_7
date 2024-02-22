@@ -1,7 +1,6 @@
 package com.example.tour.Controllers;
 
 import com.example.tour.Dto.Category.CategoryResponseDto;
-import com.example.tour.Repositories.CategoryRepository;
 import com.example.tour.Services.CategoryService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

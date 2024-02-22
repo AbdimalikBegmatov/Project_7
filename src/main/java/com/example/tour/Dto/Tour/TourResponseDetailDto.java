@@ -1,11 +1,8 @@
 package com.example.tour.Dto.Tour;
 
-import com.example.tour.Dto.Review.ReviewResponseDto;
 import com.example.tour.Entity.Review;
 import lombok.Data;
 
-import java.time.LocalDate;
-import java.util.Collection;
 import java.util.List;
 
 @Data
