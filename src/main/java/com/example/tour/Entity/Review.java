@@ -24,6 +24,7 @@ public class Review {
 
     @ManyToOne
     @JoinColumn(name = "tour")
+    @JsonIgnore
     private Tour tour;
 
     public Review(String nickName, String image, String comment, Tour tour) {

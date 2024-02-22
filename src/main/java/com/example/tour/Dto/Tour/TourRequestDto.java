@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.time.LocalDate;
+import java.util.List;
 
 
 @Data
@@ -28,17 +29,14 @@ public class TourRequestDto {
     @NotNull
     private Integer category;
     @NotNull
-    private LocalDate beginDate;
-    @NotNull
-    private LocalDate endDay;
+    private List<Integer> month;
 
-    public TourRequestDto(String title, String country, String tourLocation, String description, Integer category, LocalDate beginDate, LocalDate endDay) {
+    public TourRequestDto(String title, String country, String tourLocation, String description, Integer category, List<Integer> month) {
         this.title = title;
         this.country = country;
         this.tourLocation = tourLocation;
         this.description = description;
         this.category = category;
-        this.beginDate = beginDate;
-        this.endDay = endDay;
+        this.month = month;
     }
 }

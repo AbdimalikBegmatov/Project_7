@@ -12,6 +12,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
+import java.time.Month;
 import java.util.List;
 
 @RestController
@@ -41,5 +43,9 @@ public class TourController {
     @PostMapping("booking")
     public ResponseEntity<HttpStatus> booking(@RequestBody @Valid BookingRequestDto bookingRequestDto){
         return new ResponseEntity<>(bookingService.booking(bookingRequestDto),HttpStatus.OK);
+    }
+    @GetMapping("bycategory/{id}")
+    public ResponseEntity<List<TourResponseLiteDto>> getByCategory(@PathVariable("id") Integer id){
+        return new ResponseEntity<>(tourService.getByCategory(id),HttpStatus.OK);
     }
 }

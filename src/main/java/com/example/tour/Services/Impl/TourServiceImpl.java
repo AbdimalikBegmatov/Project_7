@@ -17,7 +17,13 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.time.Month;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
+
+import static java.time.Month.of;
 
 @Service
 @Transactional(readOnly = true)
@@ -51,17 +57,8 @@ public class TourServiceImpl implements TourService {
                                 tour.getDescription(),
                                 tour.getImage(),
                                 tour.getCategory().getTitle(),
-                                tour.getBeginDate(),
-                                tour.getEndDay(),
-                                tour.getReviews()
-                                        .stream()
-                                        .map(review->{
-                                  return new ReviewResponseDto(
-                                            review.getId(),
-                                            review.getNickName(),
-                                            review.getImage(),
-                                            review.getComment());
-                                }).toList()))
+                                tour.getMonth().stream().map(Enum::name).toList(),
+                                tour.getReviews()))
                 .orElseThrow(()->new CustomNotFoundException("Tour not found"));
     }
 
@@ -81,6 +78,7 @@ public class TourServiceImpl implements TourService {
                         new CustomNotFoundException(
                                 String.format("category with {%S} is not found",
                                         request.getCategory())));
+        List<Month> months = request.getMonth().stream().map(Month::of).toList();
 
         Tour tour = tourRepository.save(
                 new Tour(
@@ -89,33 +87,32 @@ public class TourServiceImpl implements TourService {
                         request.getTourLocation(),
                         request.getDescription(),
                         imageUrl,
-                        request.getBeginDate(),
-                        request.getEndDay(),
+                        months,
                         category));
 
         return new TourResponseDetailDto(
-                tour.getId(),
-                tour.getTitle(),
-                tour.getCountry(),
-                tour.getTourLocation(),
-                tour.getDescription(),
-                tour.getImage(),
-                tour.getCategory().getTitle(),
-                tour.getBeginDate(),
-                tour.getEndDay(),
-                tour.getReviews()
-                        .stream()
-                        .map(review->{
-                            return new ReviewResponseDto(
-                                    review.getId(),
-                                    review.getNickName(),
-                                    review.getImage(),
-                                    review.getComment());
-                        }).toList());
+                    tour.getId(),
+                    tour.getTitle(),
+                    tour.getCountry(),
+                    tour.getTourLocation(),
+                    tour.getDescription(),
+                    tour.getImage(),
+                    tour.getCategory().getTitle(),
+                    tour.getMonth().stream().map(Enum::name).toList(),
+                    tour.getReviews()
+                );
     }
 
     @Override
     public List<TourResponseLiteDto> getRecommended() {
-        return tourRepository.findRecommended(LocalDate.now().plusDays(5));
+        Month month = LocalDate.now().getMonth();
+        return tourRepository.findRecommended(month.getValue()).stream().map(tour1 -> {
+             return new TourResponseLiteDto(tour1.getId(), tour1.getTitle(),tour1.getImage());
+        }).toList();
+    }
+
+    @Override
+    public List<TourResponseLiteDto> getByCategory(Integer id) {
+        return tourRepository.findByCategory(id);
     }
 }

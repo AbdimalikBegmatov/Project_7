@@ -17,4 +17,6 @@ public interface TourService {
     TourResponseDetailDto create(TourRequestDto request) throws IOException;
 
     List<TourResponseLiteDto> getRecommended();
+
+    List<TourResponseLiteDto> getByCategory(Integer id);
 }

@@ -6,7 +6,9 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.time.Month;
 import java.util.Collection;
+import java.util.List;
 
 @Entity
 @Table(name = "Tour")
@@ -23,31 +25,28 @@ public class Tour {
     private String country;
     @Column(name = "tourLocation",nullable = false)
     private String tourLocation;
-    @Column(name = "description",nullable = false)
+    @Column(name = "description",nullable = false,length = 1000)
     private String description;
     @Column(name = "image")
     private String image;
 
-    @Column(name = "beginDate",nullable = false)
-    private LocalDate beginDate;
-    @Column(name = "countOfDay",nullable = false)
-    private LocalDate endDay;
+    @Column(name = "month",nullable = false)
+    private Collection<Month> month;
 
     @OneToMany(mappedBy = "tour")
-    private Collection<Review> reviews;
+    private List<Review> reviews;
 
     @ManyToOne
     @JoinColumn(name = "category",nullable = false)
     private Category category;
 
-    public Tour(String title, String country, String tourLocation, String description, String image, LocalDate beginDate, LocalDate endDay, Category category) {
+    public Tour(String title, String country, String tourLocation, String description, String image, List<Month> month, Category category) {
         this.title = title;
         this.country = country;
         this.tourLocation = tourLocation;
         this.description = description;
         this.image = image;
-        this.beginDate = beginDate;
-        this.endDay = endDay;
+        this.month = month;
         this.category = category;
     }
 }

@@ -17,11 +17,10 @@ public class TourResponseDetailDto {
     private String description;
     private String image;
     private String category;
-    private LocalDate beginDate;
-    private LocalDate endDay;
-    private Collection<ReviewResponseDto> responseDtoList;
+    private List<String> month;
+    private List<Review> reviewsDtoList;
 
-    public TourResponseDetailDto(Integer id, String title, String country, String tourLocation, String description, String image, String category, LocalDate beginDate, LocalDate endDay, Collection<ReviewResponseDto> responseDtoList) {
+    public TourResponseDetailDto(Integer id, String title, String country, String tourLocation, String description, String image, String category, List<String> month, List<Review> reviewsDtoList) {
         this.id = id;
         this.title = title;
         this.country = country;
@@ -29,8 +28,7 @@ public class TourResponseDetailDto {
         this.description = description;
         this.image = image;
         this.category = category;
-        this.beginDate = beginDate;
-        this.endDay = endDay;
-        this.responseDtoList = responseDtoList;
+        this.month = month;
+        this.reviewsDtoList = reviewsDtoList;
     }
 }
