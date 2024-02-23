@@ -13,7 +13,7 @@ public class WebConfig implements WebMvcConfigurer{
     public void addCorsMappings(@NonNull CorsRegistry corsRegistry){
         corsRegistry
                 .addMapping("/**")
-                .allowedOrigins("https://crazy-zam.github.io/neo-tour")
+                .allowedOrigins("crazy-zam.github.io/neo-tour")
                 .allowedMethods("GET", "POST", "PUT", "DELETE")
                 .allowedHeaders("*");
     }

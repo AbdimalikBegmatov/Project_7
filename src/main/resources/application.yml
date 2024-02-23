@@ -9,12 +9,12 @@ spring:
     hibernate:
       ddl-auto: update
 
-server:
-  ssl:
-    key-alias: tour
-    key-store: classpath:tour.jks
-    key-store-password: tourapp
-    key-store-type: JKS
+#server:
+#  ssl:
+#    key-alias: tour
+#    key-store: classpath:tour.jks
+#    key-store-password: tourapp
+#    key-store-type: JKS
 
 cloudinary:
   cloud_name: drfnzmkqf
