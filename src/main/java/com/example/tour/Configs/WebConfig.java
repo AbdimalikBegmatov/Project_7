@@ -12,9 +12,10 @@ public class WebConfig implements WebMvcConfigurer{
     @Override
     public void addCorsMappings(@NonNull CorsRegistry corsRegistry){
         corsRegistry
-                .addMapping("/**")
-                .allowedOrigins("crazy-zam.github.io/neo-tour")
+                .addMapping("/api/**")
+                .allowedOrigins("https://crazy-zam.github.io/neo-tour")
                 .allowedMethods("GET", "POST", "PUT", "DELETE")
-                .allowedHeaders("*");
+                .allowedHeaders("*")
+                .exposedHeaders("*");
     }
 }
