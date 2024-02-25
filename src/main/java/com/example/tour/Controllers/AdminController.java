@@ -35,7 +35,9 @@ public class AdminController {
     }
 
     @PostMapping(value = "tour")
-    public ResponseEntity<TourResponseDetailDto> create(@RequestBody @Valid TourRequestDto request) throws IOException {
+
+    public ResponseEntity<TourResponseDetailDto> create(@RequestPart("request") @Valid TourRequestDto request, @RequestParam("file") MultipartFile file) throws IOException {
+        request.setMultipartFile(file);
         return new ResponseEntity<>(tourService.create(request), HttpStatus.CREATED);
     }
 
