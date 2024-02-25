@@ -34,13 +34,13 @@ public class AdminController {
         this.reviewService = reviewService;
     }
 
-    @PostMapping(value = "tour")
+    @PostMapping("/tour")
     public ResponseEntity<TourResponseDetailDto> create(@RequestPart("request") @Valid TourRequestDto request, @RequestParam("file") MultipartFile file) throws IOException {
         request.setMultipartFile(file);
         return new ResponseEntity<>(tourService.create(request), HttpStatus.CREATED);
     }
 
-    @PostMapping("category")
+    @PostMapping("/category")
     public ResponseEntity<CategoryResponseDto> create(@RequestBody @Valid CategoryRequestDto categoryRequestDto){
         return new ResponseEntity<>(categoryService.create(categoryRequestDto),HttpStatus.CREATED);
     }
