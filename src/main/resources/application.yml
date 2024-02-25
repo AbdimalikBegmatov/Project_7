@@ -10,7 +10,7 @@ spring:
       ddl-auto: update
 
 server:
-  port: 443
+  port: 8080
 
 cloudinary:
   cloud_name: drfnzmkqf
