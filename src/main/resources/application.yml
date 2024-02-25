@@ -1,16 +1,16 @@
 spring:
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/tourdb
-    username: myuser2
-    password: 6574
+    url: jdbc:postgresql://viaduct.proxy.rlwy.net:23549/railway
+    username: postgres
+    password: dab*4FA5aeFC-5f3F6G-*eFg44f*CAAe
 
   jpa:
     hibernate:
       ddl-auto: update
 
 server:
-  port: 80
+  port: 443
 
 cloudinary:
   cloud_name: drfnzmkqf
