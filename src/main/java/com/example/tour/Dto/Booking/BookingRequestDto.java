@@ -15,7 +15,6 @@ public class BookingRequestDto {
     @Range(min = 1,message = "There must be at least 1 people")
     private Integer countOfPeople;
     @NotBlank
-    @Pattern(regexp = "^\\d{10}$")
     private String phoneNumber;
     private String comment;
     @NotNull(message = "tour must be selected")
